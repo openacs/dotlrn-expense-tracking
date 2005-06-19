@@ -64,6 +64,21 @@ namespace eval dotlrn_expense_tracking {
                             $community_id \
                             [package_key]
         ]
+
+        #
+        # portlet stuff
+        #
+
+        # set up the admin portlet
+
+        set admin_portal_id [dotlrn_community::get_admin_portal_id \
+                                 -community_id $community_id
+        ]
+
+        dotlrn_expense_tracking_admin_portlet::add_self_to_page \
+            -portal_id $admin_portal_id \
+            -package_id $package_id
+
         # return the package_id
         return $package_id
     }
@@ -117,7 +132,11 @@ namespace eval dotlrn_expense_tracking {
 
         @portal_id
     } {
-	# noop
+        set args [ns_set create]
+        ns_set put $args package_id 0
+        ns_set put $args param_action "overwrite"
+
+        add_portlet_helper $portal_id $args
     }
 
     ad_proc -public add_portlet_helper {
@@ -130,7 +149,10 @@ namespace eval dotlrn_expense_tracking {
         @param portal_id
         @param args An ns_set
     } {
-	#noop
+	dotlrn_expense_tracking_admin_portlet::add_self_to_page \
+            -portal_id $portal_id \
+            -package_id [ns_set get $args "package_id"] \
+            -param_action [ns_set get $args "param_action"]
     }
 
     ad_proc -public remove_portlet {
@@ -142,7 +164,9 @@ namespace eval dotlrn_expense_tracking {
         @param portal_id
         @param args An ns_set
     } {
-	#noop
+        dotlrn_expense_tracking_admin_portlet::remove_self_from_page \
+            -portal_id $portal_id \
+            -package_id [ns_set get $args "package_id"]
     }
 
     ad_proc -public clone {
