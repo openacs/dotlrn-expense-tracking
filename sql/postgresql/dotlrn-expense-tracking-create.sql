@@ -131,3 +131,5 @@ select acs_sc_binding__new (
 	    'dotlrn_applet',
 	    'dotlrn_expense_tracking'
 );
+
+\i dotlrn-expense-tracking-admin-portlet-create.sql
