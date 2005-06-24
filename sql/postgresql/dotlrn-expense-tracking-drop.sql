@@ -98,3 +98,5 @@ select acs_sc_binding__delete (
 	    'dotlrn_applet',
 	    'dotlrn_expense_tracking'
 );
+
+\i dotlrn-expense-tracking-admin-portlet-drop.sql

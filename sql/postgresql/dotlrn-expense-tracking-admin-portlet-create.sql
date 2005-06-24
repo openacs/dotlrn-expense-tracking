@@ -1,36 +1,3 @@
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
---
--- packages/dotlrn-expense-tracking/sql/dotlrn-expense-tracking-portlets-create.sql
---
-
--- Creates the dotlrn expense-tracking admin datasources for portal portlets
-
--- This is a modified version of the standard expense-tracking admin portlet which includes
--- some admin UI options tied to dotlrn specific features.   The particular feature
--- that triggered the creation of this custom portlet is the optional autosubscribing
--- of dotlrn community members to a forum.
-
--- @author Don Baccus (arjun@openforce.net)
--- @creation-date 2002-08-29
-
--- $Id$
-
--- This is free software distributed under the terms of the GNU Public
--- License version 2 or higher.  Full text of the license is available
--- from the GNU Project: http://www.fsf.org/copyleft/gpl.html
 
 create function inline_0()
 returns integer as '
